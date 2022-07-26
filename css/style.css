@@ -123,8 +123,15 @@ input:checked + .slider:before {
 }
 .dark-mode {
   background: #000;
+	color: #ffffff;
 }
 .dark-mode h1 {
+  color: #ffffff;
+}
+.dark-mode .section-title h2 {
+  color: #ffffff;
+}
+.dark-mode .h3 {
   color: #ffffff;
 }
 
@@ -596,7 +603,7 @@ section {
 # About
 --------------------------------------------------------------*/
 .about {
-  /* background: #ffffff; */
+	
 }
 .about .content {
   padding: 0 80px;
