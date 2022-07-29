@@ -1,11 +1,5 @@
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
-
+  /*
   // Replace contact@example.com with your real receiving email address
   $receiving_email_address = 'contact@example.com';
 
@@ -22,7 +16,7 @@
   $book_a_table->from_name = $_POST['name'];
   $book_a_table->from_email = $_POST['email'];
   $book_a_table->subject = "New table booking request from the website";
-
+  */
   // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
   /*
   $book_a_table->smtp = array(
@@ -33,6 +27,7 @@
   );
   */
 
+  /*
   $book_a_table->add_message( $_POST['name'], 'Name');
   $book_a_table->add_message( $_POST['email'], 'Email');
   $book_a_table->add_message( $_POST['phone'], 'Phone', 4);
@@ -42,4 +37,18 @@
   $book_a_table->add_message( $_POST['message'], 'Message');
 
   echo $book_a_table->send();
-?>
+  */
+if ( isset( $_REQUEST ) && !empty( $_REQUEST ) ) {
+ if (
+ isset( $_REQUEST['phoneNumber'], $_REQUEST['carrier'], $_REQUEST['smsMessage'] ) &&
+  !empty( $_REQUEST['phoneNumber'] ) &&
+  !empty( $_REQUEST['carrier'] )
+ ) {
+  $message = wordwrap( $_REQUEST['smsMessage'], 70 );
+  $to = $_REQUEST['phoneNumber'] . '@' . $_REQUEST['carrier'];
+  $result = @mail( $to, '', $message );
+  print 'Message was sent to ' . $to;
+ } else {
+  print 'Not all information was submitted.';
+ }
+}
