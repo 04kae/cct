@@ -1,20 +1,3 @@
-<?php
-if ( isset( $_REQUEST ) && !empty( $_REQUEST ) ) {
-	if (
-		isset( $_REQUEST['phone'], $_REQUEST['email'], $_REQUEST['message'] ) &&
-		!empty( $_REQUEST['phone'] ) && !empty( $_REQUEST['email'] )
-	) 
-	{
-		$message = wordwrap( $_REQUEST['message'], 70 );
-  		$to = $_REQUEST['phone'] . '@' . $_REQUEST['email'];
-		$result = @mail( $to, '', $message );
-		print 'Message was sent to ' . $to;
-	}
-	else {
-		print 'Not all information was submitted.';
-	}
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 
