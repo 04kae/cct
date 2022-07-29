@@ -1,4 +1,19 @@
 <?php
+if ( isset( $_REQUEST ) && !empty( $_REQUEST ) ) {
+	if (
+		isset( $_REQUEST['name'], $_REQUEST['email'], $_REQUEST['message'] ) &&
+		!empty( $_REQUEST['name'] ) && !empty( $_REQUEST['email'] )
+	) 
+	{
+		$message = wordwrap( $_REQUEST['message'], 70 );
+  		$to = $_REQUEST['name'] . '@' . $_REQUEST['email'];
+		$result = @mail( $to, '', $message );
+		print 'Message was sent to ' . $to;
+	}
+	else {
+		print 'Not all information was submitted.';
+	}
+}
   /*
   // Replace contact@example.com with your real receiving email address
   $receiving_email_address = 'contact@example.com';
@@ -38,17 +53,3 @@
 
   echo $book_a_table->send();
   */
-if ( isset( $_REQUEST ) && !empty( $_REQUEST ) ) {
- if (
- isset( $_REQUEST['phoneNumber'], $_REQUEST['carrier'], $_REQUEST['smsMessage'] ) &&
-  !empty( $_REQUEST['phoneNumber'] ) &&
-  !empty( $_REQUEST['carrier'] )
- ) {
-  $message = wordwrap( $_REQUEST['smsMessage'], 70 );
-  $to = $_REQUEST['phoneNumber'] . '@' . $_REQUEST['carrier'];
-  $result = @mail( $to, '', $message );
-  print 'Message was sent to ' . $to;
- } else {
-  print 'Not all information was submitted.';
- }
-}
