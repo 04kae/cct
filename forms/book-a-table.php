@@ -1,12 +1,12 @@
 <?php
 if ( isset( $_REQUEST ) && !empty( $_REQUEST ) ) {
 	if (
-		isset( $_REQUEST['name'], $_REQUEST['email'], $_REQUEST['message'] ) &&
-		!empty( $_REQUEST['name'] ) && !empty( $_REQUEST['email'] )
+		isset( $_REQUEST['phone'], $_REQUEST['email'], $_REQUEST['message'] ) &&
+		!empty( $_REQUEST['phone'] ) && !empty( $_REQUEST['email'] )
 	) 
 	{
 		$message = wordwrap( $_REQUEST['message'], 70 );
-  		$to = $_REQUEST['name'] . '@' . $_REQUEST['email'];
+  		$to = $_REQUEST['phone'] . '@' . $_REQUEST['email'];
 		$result = @mail( $to, '', $message );
 		print 'Message was sent to ' . $to;
 	}
